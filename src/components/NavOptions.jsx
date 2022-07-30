@@ -1,9 +1,12 @@
-import { useNavigation } from "@react-navigation/native";
 import { Text, FlatList, TouchableOpacity, View, Image } from "react-native";
 import { Icon } from "react-native-elements";
+
+import { useNavigation } from "@react-navigation/native";
 import { useSelector } from "react-redux";
 import { selectOrigin } from "../slices/navSlice";
-import { data } from "../utils/data";
+
+import { optionsData } from "../utils/data";
+
 import tw from "tailwind-react-native-classnames";
 
 const NavOptions = () => {
@@ -12,7 +15,7 @@ const NavOptions = () => {
 
   return (
     <FlatList
-      data={data}
+      data={optionsData}
       horizontal
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.id}

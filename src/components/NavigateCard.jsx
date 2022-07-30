@@ -1,10 +1,21 @@
-import { SafeAreaView, StyleSheet, Text, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
+import { Icon } from "react-native-elements";
+
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import { useDispatch } from "react-redux";
 import { GOOGLE_MAPS_APIKEY } from "../utils/api";
+import NavFavourites from "./NavFavourites";
+
+import { useDispatch } from "react-redux";
 import { selectOrigin, setDestination } from "../slices/navSlice";
-import tw from "tailwind-react-native-classnames";
 import { useNavigation } from "@react-navigation/native";
+
+import tw from "tailwind-react-native-classnames";
 
 const NavigateCard = () => {
   const dispatch = useDispatch(selectOrigin);
@@ -12,7 +23,7 @@ const NavigateCard = () => {
 
   return (
     <SafeAreaView style={tw`bg-white flex-1`}>
-      <View style={tw`border-t border-gray-500 flex-shrink`}>
+      <View>
         <View>
           <GooglePlacesAutocomplete
             placeholder="Where to?"
@@ -37,6 +48,31 @@ const NavigateCard = () => {
             }}
           />
         </View>
+
+        <NavFavourites />
+      </View>
+
+      <View style={tw`flex-row bg-white justify-evenly py-2 mt-auto mb-5`}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          style={tw`flex flex-row justify-between bg-black w-24 px-4 py-3 rounded-full `}
+        >
+          <Icon name="car" type="font-awesome" color="white" size={16} />
+          <Text style={tw`text-white text-center`}>Rides</Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity
+          onPress={() => navigation.navigate("RideOptionsCard")}
+          style={tw`flex flex-row justify-between w-24 px-4 py-3 rounded-full border`}
+        >
+          <Icon
+            name="fast-food-outline"
+            type="ionicon"
+            color="black"
+            size={16}
+          />
+          <Text style={tw`text-center`}>Eats</Text>
+        </TouchableOpacity>
       </View>
     </SafeAreaView>
   );
@@ -51,7 +87,7 @@ const toInputBoxStyles = StyleSheet.create({
     flex: 0,
   },
   textInput: {
-    backgroundColor: "#DDDDDF",
+    backgroundColor: "#F5F5F5",
     borderRadius: 0,
     fontSize: 18,
   },

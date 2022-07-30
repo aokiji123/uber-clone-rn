@@ -1,4 +1,4 @@
-import { StyleSheet, Text, SafeAreaView } from 'react-native'
+import { Text, SafeAreaView } from "react-native";
 
 const FoodScreen = () => {
   return (
@@ -6,6 +6,6 @@ const FoodScreen = () => {
       <Text>Food Screen</Text>
     </SafeAreaView>
   );
-}
- 
+};
+
 export default FoodScreen;

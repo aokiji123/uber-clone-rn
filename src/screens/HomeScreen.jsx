@@ -1,9 +1,11 @@
 import { View, Image, SafeAreaView } from "react-native";
+import { NavFavourites, NavOptions } from "../components";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import { GOOGLE_MAPS_APIKEY } from "../utils/api";
+
 import { useDispatch } from "react-redux";
 import { setDestination, setOrigin } from "../slices/navSlice";
-import { NavOptions } from "../components";
-import { GOOGLE_MAPS_APIKEY } from "../utils/api";
+
 import tw from "tailwind-react-native-classnames";
 
 const HomeScreen = () => {
@@ -49,6 +51,7 @@ const HomeScreen = () => {
           }}
         />
         <NavOptions />
+        <NavFavourites />
       </View>
     </SafeAreaView>
   );
